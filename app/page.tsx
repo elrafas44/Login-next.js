@@ -11,7 +11,13 @@ import Image from "next/image";
 
 
 export default function LoginPage() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  type FormData = {
+    username: string;
+    password: string;
+  };
+  
+  const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+  
   const [error, setError] = useState("");
   const router = useRouter();
 
@@ -26,7 +32,8 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-96">
-        <Image src="/login.png" alt="Login" className="w-full h-40 object-cover rounded-md mb-4" />
+        <Image src="/login.png" alt="Login" width={400} height={160} className="w-full h-40 object-cover rounded-md mb-4" />
+
        
         <h2 className="text-2xl font-semibold text-center mb-4">Iniciar Sesión</h2>
 
